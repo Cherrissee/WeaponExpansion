@@ -1,2 +1,13 @@
-# This file will automatically update with entries for new content after a build and reload.
+Items: {
+	ChargeBow: {
+		DisplayName: Charge Bow
+		Tooltip: ""
+	}
 
+	LightbreakArrowItem: {
+		DisplayName: Lightbreak Arrow Item
+		Tooltip: ""
+	}
+}
+
+Projectiles.LightbreakArrow.DisplayName: Lightbreak Arrow

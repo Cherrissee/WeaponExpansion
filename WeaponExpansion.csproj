@@ -7,10 +7,12 @@
 	<PropertyGroup>
 		
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="Content\Projectiles\LightbreakArrow.png" />
+	  <None Remove="Content\Projectiles\LightbreakArrowItem.png" />
+	  <None Remove="Content\Weapons\ChargeBow.png" />
+	</ItemGroup>
 
 	<!-- References -->
-	<ItemGroup>
-	  <Folder Include="Content\Projectiles\" />
-	</ItemGroup>
 
 </Project>
