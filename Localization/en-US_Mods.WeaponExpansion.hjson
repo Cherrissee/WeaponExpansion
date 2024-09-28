@@ -10,4 +10,7 @@ Items: {
 	}
 }
 
-Projectiles.LightbreakArrow.DisplayName: Lightbreak Arrow
+Projectiles: {
+	LightbreakArrow.DisplayName: Lightbreak Arrow
+	ExplosiveOrb.DisplayName: Explosive Orb
+}

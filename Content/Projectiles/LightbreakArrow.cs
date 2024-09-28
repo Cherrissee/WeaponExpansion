@@ -67,16 +67,21 @@ namespace WeaponExpansion.Content.Projectiles
 
         public override void OnKill(int timeLeft)
         {
-            for(int i = 0; i < 5; i++)
-            {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(),
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(),
                 Projectile.position,
                 Vector2.Zero,
-                (i % 2 == 0) ? ProjectileID.VortexLightning : ProjectileID.StardustGuardianExplosion,
-                Projectile.damage / 4,
+                ModContent.ProjectileType<ExplosiveOrb>(),
+                Projectile.damage * 2,
                 Projectile.knockBack,
                 Projectile.owner);
-            }
+
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(),
+                Projectile.position,
+                Vector2.Zero,
+                ProjectileID.DaybreakExplosion,
+                0,
+                0,
+                Projectile.owner);
         }
     }
 }
