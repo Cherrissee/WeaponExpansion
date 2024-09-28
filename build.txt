@@ -1,0 +1,3 @@
+displayName = Weapon Exapnsion
+author = SarryGeezOwO
+version = 0.1
