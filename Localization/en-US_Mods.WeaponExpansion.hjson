@@ -8,6 +8,11 @@ Items: {
 		DisplayName: Lightbreak Arrow Item
 		Tooltip: ""
 	}
+
+	Annihilator: {
+		DisplayName: Annihilator
+		Tooltip: ""
+	}
 }
 
 Projectiles: {

@@ -13,7 +13,7 @@ namespace WeaponExpansion.Content.Items.Arrows
             Item.DamageType = DamageClass.Ranged; // Ranged damage
             Item.width = 14;            // Item texture width
             Item.height = 32;           // Item texture height
-            Item.maxStack = 999;        // Maximum stack size
+            Item.maxStack = 9999;        // Maximum stack size
             Item.consumable = true;     // Ammunition is consumable
             Item.knockBack = 3.5f;      // Knockback
             Item.value = 10;            // Item value in coins

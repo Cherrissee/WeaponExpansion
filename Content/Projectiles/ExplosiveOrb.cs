@@ -60,10 +60,10 @@ namespace WeaponExpansion.Content.Projectiles
             }
 
             Lighting.AddLight(Projectile.position, 0.1f, 0.5f, 1f);
-            if (Main.rand.NextBool(4))
+            if (Main.rand.NextBool(3))
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, 16, 16, DustID.VilePowder);
-                dust.velocity *= 0.3f; // Slower particle movement
+                Dust dust = Dust.NewDustDirect(Projectile.position, 16, 16, DustID.HallowSpray);
+                dust.velocity *= 0.2f; // Slower particle movement
             }
         }
     }

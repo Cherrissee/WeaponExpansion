@@ -1,49 +1,48 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using WeaponExpansion.Content.Projectiles;
 
 namespace WeaponExpansion.Content.Weapons
 {
-    internal class ChargeBow : ModItem 
+    internal class Annihilator : ModItem 
     {
+        public float hitRadius = 140f;
+
         public override void SetDefaults()
         {
-            Item.width = 16;
+            Item.width = 32;
             Item.height = 32;
 
             // Combat Properties
-            Item.damage = 400;
+            Item.damage = 1;
             Item.DamageType = DamageClass.Ranged;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.useTime = 30;
+            Item.useAnimation = 30;
             Item.knockBack = 6f;
-            Item.autoReuse = true;
+            Item.autoReuse = false;
+            Item.scale = 0.85f;
 
             // Other Values
-            Item.ChangePlayerDirectionOnShoot = true;
             Item.value = 100;
-            Item.useAmmo = AmmoID.Arrow;
-            Item.shoot = ProjectileID.PurificationPowder;
-            Item.shootSpeed = 200;
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.UseSound = SoundID.Item1;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.UseSound = SoundID.DD2_LightningBugZap;
         }
 
-        public override void HoldItem(Player player)
+        public override bool? UseItem(Player player)
         {
-            if (Main.mouseRight && Main.mouseRightRelease)
+            for (int i = 0; i < Main.projectile.Length; i++)
             {
-                for (int i = 0; i < Main.projectile.Length; i++)
+                Projectile proj = Main.projectile[i];
+                if (proj.active && proj.type == ModContent.ProjectileType<ExplosiveOrb>())
                 {
-                    Projectile proj = Main.projectile[i];
-                    if(proj.active && proj.type == ModContent.ProjectileType<ExplosiveOrb>())
-                    {
-                        Explode(proj);
-                    }
+                    Explode(proj);
                 }
             }
+            return base.UseItem(player);
         }
 
         private void Explode(Projectile projectile)
@@ -63,7 +62,7 @@ namespace WeaponExpansion.Content.Weapons
                 Main.projectile[projID].timeLeft = 120; // Despawns after 1 second
             }
 
-            float hitRadius = 130f;
+            
 
             // Now check for enemies
             foreach (NPC npc in Main.npc)
@@ -74,12 +73,15 @@ namespace WeaponExpansion.Content.Weapons
                     if (distance < hitRadius)
                     {
                         // Apply damage to the NPC
-                        npc.StrikeNPC(npc.CalculateHitInfo(
-                            projectile.damage, projectile.direction, true, projectile.knockBack, DamageClass.Ranged));
-                        //WeaponExpansion.DrawDebugCircle(projectile.Center, hitRadius, DustID.ToxicBubble);
+                        NPC.HitInfo damageDealt = npc.CalculateHitInfo(projectile.damage, projectile.direction, true, projectile.knockBack, DamageClass.Ranged);
+
+                        npc.StrikeNPC(damageDealt, fromNet : true);
+                        NetMessage.SendStrikeNPC(npc, damageDealt);
                     }
                 }
             }
+
+            SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, position: projectile.position);
 
             // Kill this projectile
             projectile.Kill();
