@@ -73,7 +73,7 @@ namespace WeaponExpansion.NPCs
 
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
-            Main.NewText("chat button clicked");
+            
             if (firstButton)
             {
                 shopName = "Shop";  
@@ -119,7 +119,7 @@ namespace WeaponExpansion.NPCs
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
-            damage = 1000;
+            damage = 9999;
             knockback = 2f;
         }
 
@@ -137,7 +137,7 @@ namespace WeaponExpansion.NPCs
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {
-            multiplier = 20f;
+            multiplier = 200f;
         }
 
         public override void OnKill()
