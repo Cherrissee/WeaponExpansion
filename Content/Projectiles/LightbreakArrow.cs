@@ -75,7 +75,7 @@ namespace WeaponExpansion.Content.Projectiles
         }
 
         public override void OnKill(int timeLeft)
-        {
+        { 
 
             Projectile.NewProjectile(Projectile.GetSource_FromThis(),
                 Projectile.position,

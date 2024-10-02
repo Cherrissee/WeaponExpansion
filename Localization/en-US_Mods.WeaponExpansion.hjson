@@ -13,14 +13,15 @@ Items: {
 		DisplayName: Annihilator
 		Tooltip: ""
 	}
-
-	Stormbreaker: {
-		DisplayName: Stormbreaker
-		Tooltip: ""
-	}
+}
 
 	DeckersDoom: {
 		DisplayName: Deckers Doom
+		Tooltip: ""
+	}
+
+	Timebow: {
+		DisplayName: Timebow
 		Tooltip: ""
 	}
 }
@@ -28,9 +29,6 @@ Items: {
 Projectiles: {
 	LightbreakArrow.DisplayName: Lightbreak Arrow
 	ExplosiveOrb.DisplayName: Explosive Orb
-	StormbreakerLaser.DisplayName: Stormbreaker Laser
-	StormbreakerProjectile.DisplayName: Stormbreaker Projectile
-	DeckersDoomProj.DisplayName: Deckers Doom Proj
 }
 
 NPCs: {
