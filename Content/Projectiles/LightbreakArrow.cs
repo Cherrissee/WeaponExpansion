@@ -81,7 +81,7 @@ namespace WeaponExpansion.Content.Projectiles
                 Projectile.position,
                 Vector2.Zero,
                 ModContent.ProjectileType<ExplosiveOrb>(),
-                Projectile.damage * 2,
+                Projectile.damage,
                 Projectile.knockBack,
                 Projectile.owner);
 

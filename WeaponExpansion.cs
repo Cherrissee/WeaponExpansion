@@ -17,21 +17,39 @@ namespace WeaponExpansion
 			Main.NewText(msg, 255, 120, 10);
 		}
 
-        public static void DrawDebugCircle(Vector2 center, float radius, int dustType)
-        {
-            int numDust = 100;
-            for (int i = 0; i < numDust; i++)
-            {
-                // Angle around the circle (in radians)
-                float angle = MathHelper.ToRadians(360f * i / numDust);
+        public static void SpawnCircularDust(Vector2 position, int radius, int dustType, int numDust)
+		{
+			for( int i = 0; i < numDust; i++)
+			{
+				double angle = (Math.PI * 2) * i / numDust;
 
-                // Calculate the position of the dust particle on the circle
-                Vector2 position = center + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * radius;
+				float dustX = position.X + (float)(radius * Math.Cos(angle));
+				float dustY = position.Y + (float)(radius * Math.Sin(angle));
 
-                // Spawn dust at the calculated position
-                Dust dust = Dust.NewDustPerfect(position, dustType, Vector2.Zero, 0, Color.White, 1f);
-                dust.velocity = Vector2.Zero;
-            }
-        }
+				Vector2 dustPosition = new Vector2(dustX, dustY);
+				Dust dust = Dust.NewDustPerfect(dustPosition, dustType);
+
+				dust.noGravity = true;
+				dust.velocity *= 0.1f;
+			}
+		}
+
+		public static void spawnSmokeDust(Vector2 position, float spreadSpeed, int dustType, int numDust)
+		{
+			for(int i = 0;i < numDust;i++)
+			{
+				double angle = (Math.PI * 2) * i / numDust;
+				
+				float xVel = MathF.Cos((float)angle);
+				float yVel = MathF.Sin((float)angle);
+
+				Vector2 dustDirection = new Vector2(xVel, yVel);
+				dustDirection.Normalize();
+
+				Dust dust = Dust.NewDustPerfect(position, dustType, Velocity : dustDirection);
+				dust.velocity *= spreadSpeed;
+				dust.noGravity= true;
+			}
+		}
     }
 }

@@ -14,7 +14,7 @@ namespace WeaponExpansion.Content.Weapons
 
         public override void SetDefaults()
         {
-            Item.width = 32;
+            Item.width = 32;                                                                                                         
             Item.height = 32;
 
             // Combat Properties
