@@ -30,7 +30,7 @@ namespace WeaponExpansion
 				Dust dust = Dust.NewDustPerfect(dustPosition, dustType);
 
 				dust.noGravity = true;
-				dust.velocity *= 0.1f;
+				dust.velocity *= 0f;
 			}
 		}
 

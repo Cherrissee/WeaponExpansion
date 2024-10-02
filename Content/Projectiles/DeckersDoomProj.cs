@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using WeaponExpansion.Content.Buffs;
 using WeaponExpansion.Content.Weapons;
 
 namespace WeaponExpansion.Content.Projectiles
@@ -79,7 +80,7 @@ namespace WeaponExpansion.Content.Projectiles
             }
 
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Dust dust = Dust.NewDustDirect(Projectile.Center, 8, 8, dustEffect);
                 dust.velocity *= 0.3f;
@@ -105,10 +106,9 @@ namespace WeaponExpansion.Content.Projectiles
             else if (rollEffect == CardType.HealingAce)
             {
                 float explosionRadius = 150;
-                for(int i = 50; i <= explosionRadius; i += 50)
-                {
-                    WeaponExpansion.SpawnCircularDust(Projectile.position, i, DustID.Firework_Green, i / 2);
-                }
+                WeaponExpansion.SpawnCircularDust(Projectile.position, 150, DustID.Firework_Green, 100);
+                WeaponExpansion.spawnSmokeDust(Projectile.position, 10f, DustID.Firework_Green, 100);
+                WeaponExpansion.spawnSmokeDust(Projectile.position, 9f, DustID.Firework_Green, 100);
 
                 // Heal the owner by 50
                 Main.player[Projectile.owner].Heal(50);
@@ -122,6 +122,10 @@ namespace WeaponExpansion.Content.Projectiles
                         p.Heal(80);
                     }
                 }
+            }
+            else if(rollEffect == CardType.SpeedyJack)
+            {
+                Main.player[Projectile.owner].AddBuff(ModContent.BuffType<SpeedyJackBuff>(), 320);
             }
         }
 

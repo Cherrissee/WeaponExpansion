@@ -13,7 +13,6 @@ Items: {
 		DisplayName: Annihilator
 		Tooltip: ""
 	}
-}
 
 	DeckersDoom: {
 		DisplayName: Deckers Doom
@@ -29,6 +28,8 @@ Items: {
 Projectiles: {
 	LightbreakArrow.DisplayName: Lightbreak Arrow
 	ExplosiveOrb.DisplayName: Explosive Orb
+	DeckersDoomProj.DisplayName: Deckers Doom Proj
+	TimeArrow.DisplayName: Time Arrow
 }
 
 NPCs: {
@@ -45,5 +46,12 @@ NPCs: {
 			LikeNPC_Princess: I like {NPCName}.
 			Princess_LovesNPC: I like {NPCName}.
 		}
+	}
+}
+
+Buffs: {
+	SpeedyJackBuff: {
+		DisplayName: Speedy Jack Buff
+		Description: Mods.WeaponExpansion.Buffs.SpeedyJackBuff.Description
 	}
 }
