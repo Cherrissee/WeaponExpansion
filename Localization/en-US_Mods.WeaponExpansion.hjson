@@ -13,11 +13,18 @@ Items: {
 		DisplayName: Annihilator
 		Tooltip: ""
 	}
+
+	Timebow: {
+		DisplayName: Timebow
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
 	LightbreakArrow.DisplayName: Lightbreak Arrow
 	ExplosiveOrb.DisplayName: Explosive Orb
+	TimeArrow.DisplayName: Time Arrow
+	Timebowproj.DisplayName: Timebowproj
 }
 
 NPCs: {
